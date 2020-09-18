@@ -1,4 +1,10 @@
 <div>
+    <!-- edit -->
+    <div>
+
+    </div>
+
+    <!--  -->
     <table class="table">
         <thead>
             <tr>
@@ -6,6 +12,7 @@
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>COLOR</th>
+                <th>......</th>
             </tr>
         </thead>
         <tbody>
@@ -14,7 +21,8 @@
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.color}}</td>
-
+                <td><button mat-fab class="mr-2" (click)="Delete(item.id)"><span class="material-icons" >delete</span> </button>
+                    <button mat-fab><span class="material-icons">create</span></button></td>
 
             </tr>
         </tbody>
