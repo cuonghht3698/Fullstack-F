@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ViewChildren } from '@angular/core';
 import { GetApiService } from '../get-api.service';
+import {  AppComponent } from '../app.component';
 @Component({
   selector: 'app-api',
   templateUrl: './api.component.html',
@@ -8,6 +9,7 @@ import { GetApiService } from '../get-api.service';
 })
 export class ApiComponent implements OnInit {
 
+  @ViewChild('loadData')  AppComponent :AppComponent;
   constructor(private api:GetApiService,private http:HttpClient) { }
    data:object;
   ngOnInit(): void {
@@ -18,7 +20,7 @@ export class ApiComponent implements OnInit {
       this.data=data;
     })
   }
-
+  @Output() loaddata = new EventEmitter<object>();
   Delete(id){
     let url = "https://localhost:44356/api/products/";
     this.http.delete(url+id).subscribe(res => {
@@ -28,5 +30,10 @@ export class ApiComponent implements OnInit {
         console.log(error);
       });
     })
+  }
+
+  UptoForm(item){
+     this.loaddata.emit(item)
+  
   }
 }

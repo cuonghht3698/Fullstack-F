@@ -2,6 +2,15 @@
     <span>{{ data | json }}</span>
     <form #form="ngForm" autocomplete="off">
         <h1 class="text-center">DEMO</h1>
+
+        <div class="input-group">
+            <mat-form-field class="input-group" appearance="outline">
+                <mat-label>Id</mat-label>
+                <input matInput required [(ngModel)]="id" name="id" disabled>
+            </mat-form-field>
+
+        </div>
+
         <div class="input-group">
             <mat-form-field class="input-group" appearance="outline">
                 <mat-label>Name</mat-label>
@@ -42,6 +51,7 @@
 
         <div class="text-center">
             <button mat-raised-button color="primary" (click)="sentData()">Submit</button>
+            <button mat-raised-button color="primary" (click)="Update()">Submit</button>
         </div>
     </form>
 
@@ -49,8 +59,7 @@
 
 
 
-
+    <br>
+    <app-api #ReLoadData (loaddata)="SetData($event)"></app-api>
 
 </div>
-<br>
-<app-api #ReLoadData></app-api>
